@@ -1,14 +1,1030 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>NEET Mocktest by Kavy - Master Your Medical Entrance Exam</title>
+  <meta
+    name="description"
+    content="Premium NEET mock tests designed to help you ace your medical entrance exam. Practice with 10 comprehensive tests covering Physics, Chemistry, Botany, and Zoology."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #0a1628;
+      --dark-navy: #050b14;
+      --blue: #1e40af;
+      --green: #10b981;
+      --light-green: #34d399;
+      --cream: #f8f6f3;
+      --gray: #9ca3af;
+      --light-gray: #e5e7eb;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-navy);
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* anchor jump offset for fixed navbar */
+    #home,
+    #features,
+    #tests,
+    #about {
+      scroll-margin-top: 100px;
+    }
+
+    /* avoid blocking page scroll when mobile menu is open */
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    .serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--dark-navy);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--green);
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--light-green);
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Gradient Text with safe fallback color */
+    .gradient-text {
+      color: var(--light-green); /* <CHANGE> fallback color so text is visible if clip not supported */
+      background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Glass Effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Subtle hover effects only (no heavy animations) */
+    .hover-lift {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(16, 185, 129, 0.18);
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%);
+      color: var(--dark-navy);
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 24px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--cream);
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 50px;
+      border: 2px solid var(--green);
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-secondary:hover {
+      background: var(--green);
+      color: var(--dark-navy);
+      transform: scale(1.02);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 24px 48px;
+      transition: background 0.2s ease, padding 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.scrolled {
+      background: rgba(10, 22, 40, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 16px 48px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px; /* <CHANGE> ensure content not hidden under nav on very small screens */
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      background: radial-gradient(circle at 50% 50%, var(--green) 0%, transparent 50%);
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2px;
+      background: var(--green);
+    }
+    .stat-card {
+      background: var(--navy);
+      padding: 48px 32px;
+      text-align: center;
+      transition: background 0.2s ease;
+    }
+    .stat-card:hover {
+      background: var(--dark-navy);
+    }
+
+    /* Tests */
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    .test-card {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .test-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green) 0%, var(--light-green) 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.15s ease;
+    }
+    .test-card:hover::before {
+      transform: scaleX(1);
+    }
+    .test-card:hover {
+      border-color: var(--green);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(16, 185, 129, 0.18);
+    }
+
+    /* Features */
+    .feature-card {
+      background: var(--navy);
+      border-radius: 24px;
+      padding: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+    .feature-card:hover {
+      border-color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--navy);
+      z-index: 999;
+      padding: 80px 32px 32px;
+      transform: translateX(100%);
+      transition: transform 0.2s ease;
+      /* <CHANGE> make hidden menu non-interactive so it doesn't block clicks */
+      pointer-events: none;
+    }
+    .mobile-menu.active {
+      transform: translateX(0);
+      pointer-events: auto; /* interactive only when open */
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 1001;
+      padding: 8px;
+      background: none;
+      border: none;
+      position: relative;
+    }
+    .hamburger span {
+      width: 30px;
+      height: 3px;
+      background: var(--cream);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      border-radius: 2px;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 24px;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .desktop-menu {
+        display: none;
+      }
+      .hero {
+        padding: 80px 24px 0;
+      }
+      .test-grid {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 85%;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px;
+        padding-bottom: 8px;
+      }
+      .test-card {
+        scroll-snap-align: start;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* <CHANGE> remove tick draw animation so ticks are always visible */
+    .tick-icon path {
+      stroke-dasharray: none !important;
+      stroke-dashoffset: 0 !important;
+    }
+  </style>
 </head>
 
 <body>
-  
-</body>
+  <nav id="navbar">
+    <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <div
+          style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--dark-navy)"
+        >
+          N
+        </div>
+        <span style="font-weight: 700; font-size: 20px">NEET Mocktest</span>
+      </div>
 
+      <div class="desktop-menu" style="display: flex; gap: 48px; align-items: center">
+        <a href="#home" style="color: var(--cream); text-decoration: none; font-weight: 500">Home</a>
+        <a href="#tests" style="color: var(--cream); text-decoration: none; font-weight: 500">Tests</a>
+        <a href="#features" style="color: var(--cream); text-decoration: none; font-weight: 500">Features</a>
+        <a href="#about" style="color: var(--cream); text-decoration: none; font-weight: 500">About</a>
+        <a href="#tests" class="btn-primary" style="padding: 12px 24px; font-size: 14px">Start Practice</a>
+      </div>
+
+      <button
+        class="hamburger"
+        type="button"
+        aria-label="Toggle menu"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+        onclick="toggleMobileMenu()"
+      >
+        <span></span> <span></span> <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true" role="dialog">
+    <div style="display: flex; flex-direction: column; gap: 32px">
+      <a href="#home" onclick="toggleMobileMenu()" style="color: var(--cream); text-decoration: none; font-weight: 600; font-size: 24px">Home</a>
+      <a href="#tests" onclick="toggleMobileMenu()" style="color: var(--cream); text-decoration: none; font-weight: 600; font-size: 24px">Tests</a>
+      <a href="#features" onclick="toggleMobileMenu()" style="color: var(--cream); text-decoration: none; font-weight: 600; font-size: 24px">Features</a>
+      <a href="#about" onclick="toggleMobileMenu()" style="color: var(--cream); text-decoration: none; font-weight: 600; font-size: 24px">About</a>
+      <a href="#tests" class="btn-primary" onclick="toggleMobileMenu()">Start Practice</a>
+    </div>
+  </div>
+
+  <section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div style="max-width: 1200px; margin: 0 auto; text-align: center; position: relative; z-index: 1; padding: 0 24px">
+      <div style="margin-bottom: 24px; margin-top: 96px">
+        <span
+          style="display: inline-block; padding: 8px 20px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--green); border-radius: 50px; color: var(--green); font-size: 14px; font-weight: 600; letter-spacing: 1px"
+          >PREMIUM NEET PREPARATION</span
+        >
+      </div>
+
+      <h1 class="serif" style="font-size: clamp(48px, 8vw, 96px); font-weight: 800; line-height: 1.1; margin-bottom: 32px; letter-spacing: -2px">
+        Master your<br />
+        <span class="gradient-text">medical entrance</span><br />
+        with confidence
+      </h1>
+
+      <p style="font-size: clamp(18px, 2vw, 24px); color: var(--gray); max-width: 700px; margin: 0 auto 48px; line-height: 1.6">
+        Practice with 10 comprehensive NEET mock tests designed to simulate the real exam experience. Track your progress, identify weak areas, and achieve your dream score.
+      </p>
+
+      <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap">
+        <a href="#tests" class="btn-primary">Start Free Test</a>
+        <a href="#features" class="btn-secondary">Explore Features</a>
+      </div>
+
+      <div style="margin-top: 64px; display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; color: var(--gray); font-size: 14px">
+        <div style="display: flex; align-items: center; gap: 8px">
+          <svg class="tick-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16.6667 5L7.50004 14.1667L3.33337 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>180 Questions per Test</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px">
+          <svg class="tick-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16.6667 5L7.50004 14.1667L3.33337 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>Real Exam Pattern</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px">
+          <svg class="tick-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16.6667 5L7.50004 14.1667L3.33337 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>Detailed Solutions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 0; margin: 80px 0">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div style="font-size: 56px; font-weight: 800; color: var(--green); margin-bottom: 12px">1800+</div>
+        <div style="font-size: 18px; color: var(--gray)">Practice Questions</div>
+        <div style="font-size: 14px; color: var(--gray); margin-top: 8px">Across all subjects</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size: 56px; font-weight: 800; color: var(--green); margin-bottom: 12px">10</div>
+        <div style="font-size: 18px; color: var(--gray)">Full-Length Tests</div>
+        <div style="font-size: 14px; color: var(--gray); margin-top: 8px">Complete mock exams</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size: 56px; font-weight: 800; color: var(--green); margin-bottom: 12px">3hrs</div>
+        <div style="font-size: 18px; color: var(--gray)">Real Exam Duration</div>
+        <div style="font-size: 14px; color: var(--gray); margin-top: 8px">Timed practice</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size: 56px; font-weight: 800; color: var(--green); margin-bottom: 12px">100%</div>
+        <div style="font-size: 18px; color: var(--gray)">Free Access</div>
+        <div style="font-size: 14px; color: var(--gray); margin-top: 8px">No hidden charges</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" style="padding: 120px 24px; max-width: 1400px; margin: 0 auto">
+    <div style="text-align: center; margin-bottom: 80px">
+      <div style="margin-bottom: 16px">
+        <span
+          style="display: inline-block; padding: 8px 20px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--green); border-radius: 50px; color: var(--green); font-size: 14px; font-weight: 600; letter-spacing: 1px"
+          >FEATURES</span
+        >
+      </div>
+      <h2 class="serif" style="font-size: clamp(40px, 6vw, 72px); font-weight: 800; margin-bottom: 24px; letter-spacing: -1px">
+        Everything you need<br />
+        to <span class="gradient-text">ace NEET</span>
+      </h2>
+      <p style="font-size: 20px; color: var(--gray); max-width: 600px; margin: 0 auto">
+        Comprehensive features designed to help you prepare effectively and efficiently.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px">
+      <div class="feature-card">
+        <div
+          style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px">Subject-Wise Practice</h3>
+        <p style="color: var(--gray); line-height: 1.6">
+          Master Physics, Chemistry, Botany, and Zoology with 45 questions each. Focus on your weak areas and build confidence.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div
+          style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px">Real-Time Timer</h3>
+        <p style="color: var(--gray); line-height: 1.6">
+          Practice with a 3-hour countdown timer that simulates the actual NEET exam environment. Build time management skills.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div
+          style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px">Instant Results</h3>
+        <p style="color: var(--gray); line-height: 1.6">
+          Get detailed score analysis immediately after submission. Track your performance across all subjects with accuracy metrics.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div
+          style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M21 16V8C20.9996 7.64927 20.9071 7.30481 20.7315 7.00116C20.556 6.69751 20.3037 6.44536 20 6.27L13 2.27C12.696 2.09446 12.3511 2.00205 12 2.00205C11.6489 2.00205 11.304 2.09446 11 2.27L4 6.27C3.69626 6.44536 3.44398 6.69751 3.26846 7.00116C3.09294 7.30481 3.00036 7.64927 3 8V16C3.00036 16.3507 3.09294 16.6952 3.26846 16.9988C3.44398 17.3025 3.69626 17.5546 4 17.73L11 21.73C11.304 21.9055 11.6489 21.9979 12 21.9979C12.3511 21.9979 12.696 21.9055 13 21.73L20 17.73C20.3037 17.5546 20.556 17.3025 20.7315 16.9988C20.9071 16.6952 20.9996 16.3507 21 16Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path d="M3.27002 6.96L12 12.01L20.73 6.96" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M12 22.08V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px">Detailed Solutions</h3>
+        <p style="color: var(--gray); line-height: 1.6">
+          Learn from comprehensive explanations for every question. Understand concepts deeply and avoid repeating mistakes.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div
+          style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px">Rank Prediction</h3>
+        <p style="color: var(--gray); line-height: 1.6">
+          Get an estimated rank based on your score. Understand where you stand and set realistic goals for improvement.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div
+          style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px">Smart Navigation</h3>
+        <p style="color: var(--gray); line-height: 1.6">
+          Jump between questions easily. Mark questions for review and track answered, unanswered, and marked questions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tests" style="padding: 120px 24px; max-width: 1400px; margin: 0 auto">
+    <div style="text-align: center; margin-bottom: 80px">
+      <div style="margin-bottom: 16px">
+        <span
+          style="display: inline-block; padding: 8px 20px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--green); border-radius: 50px; color: var(--green); font-size: 14px; font-weight: 600; letter-spacing: 1px"
+          >MOCK TESTS</span
+        >
+      </div>
+      <h2 class="serif" style="font-size: clamp(40px, 6vw, 72px); font-weight: 800; margin-bottom: 24px; letter-spacing: -1px">
+        Choose your<br />
+        <span class="gradient-text">practice test</span>
+      </h2>
+      <p style="font-size: 20px; color: var(--gray); max-width: 600px; margin: 0 auto">
+        10 comprehensive mock tests covering all NEET subjects. Start practicing now and track your progress.
+      </p>
+    </div>
+
+    <div class="test-grid">
+      <div class="test-card hover-lift" onclick="window.location.href='/NEET/mocktest/html/test1.html'">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px">
+          <div
+            style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: var(--dark-navy)"
+          >
+            1
+          </div>
+          <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; color: var(--green); font-size: 12px; font-weight: 600">180 Questions</span>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px">NEET Mock Test 1</h3>
+        <p style="color: var(--gray); margin-bottom: 24px; line-height: 1.6">
+          Complete mock test covering Physics, Chemistry, Botany, and Zoology with detailed solutions.
+        </p>
+        <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap">
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+              <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>3 Hours</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>4 Subjects</span>
+          </div>
+        </div>
+        <button class="btn-primary" style="width: 100%; padding: 14px">Start Test</button>
+      </div>
+
+    
+      <div class="test-card hover-lift" onclick="window.location.href='/NEET/mocktest/html/test2.html'">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px">
+          <div
+            style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: var(--dark-navy)"
+          >
+            2
+          </div>
+          <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; color: var(--green); font-size: 12px; font-weight: 600">180 Questions</span>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px">NEET Mock Test 2</h3>
+        <p style="color: var(--gray); margin-bottom: 24px; line-height: 1.6">
+          Complete mock test covering Physics, Chemistry, Botany, and Zoology with detailed solutions.
+        </p>
+        <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap">
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+              <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>3 Hours</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>4 Subjects</span>
+          </div>
+        </div>
+        <button class="btn-primary" style="width: 100%; padding: 14px">Start Test</button>
+      </div>
+      
+      <div class="test-card hover-lift" onclick="window.location.href='/NEET/mocktest/html/test3.html'">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px">
+          <div
+            style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: var(--dark-navy)"
+          >
+            3
+          </div>
+          <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; color: var(--green); font-size: 12px; font-weight: 600">180 Questions</span>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px">NEET Mock Test 3</h3>
+        <p style="color: var(--gray); margin-bottom: 24px; line-height: 1.6">
+          Complete mock test covering Physics, Chemistry, Botany, and Zoology with detailed solutions.
+        </p>
+        <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap">
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+              <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>3 Hours</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>4 Subjects</span>
+          </div>
+        </div>
+        <button class="btn-primary" style="width: 100%; padding: 14px">Start Test</button>
+      </div>
+
+      <div class="test-card hover-lift" onclick="window.location.href='/NEET/mocktest/html/test4.html'">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px">
+          <div
+            style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: var(--dark-navy)"
+          >
+            4
+          </div>
+          <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; color: var(--green); font-size: 12px; font-weight: 600">180 Questions</span>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px">NEET Mock Test 4</h3>
+        <p style="color: var(--gray); margin-bottom: 24px; line-height: 1.6">
+          Complete mock test covering Physics, Chemistry, Botany, and Zoology with detailed solutions.
+        </p>
+        <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap">
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+              <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>3 Hours</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>4 Subjects</span>
+          </div>
+        </div>
+        <button class="btn-primary" style="width: 100%; padding: 14px">Start Test</button>
+      </div>
+      
+      <div class="test-card hover-lift" onclick="window.location.href='/NEET/mocktest/html/test5.html'">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px">
+          <div
+            style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: var(--dark-navy)"
+          >
+            5
+          </div>
+          <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; color: var(--green); font-size: 12px; font-weight: 600">180 Questions</span>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px">NEET Mock Test 5</h3>
+        <p style="color: var(--gray); margin-bottom: 24px; line-height: 1.6">
+          Complete mock test covering Physics, Chemistry, Botany, and Zoology with detailed solutions.
+        </p>
+        <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap">
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+              <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>3 Hours</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>4 Subjects</span>
+          </div>
+        </div>
+        <button class="btn-primary" style="width: 100%; padding: 14px">Start Test</button>
+      </div>
+      
+      <div class="test-card hover-lift" onclick="window.location.href='/NEET/mocktest/html/test6.html'">
+  <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px">
+    <div
+      style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: var(--dark-navy)"
+    >
+      6
+    </div>
+    <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; color: var(--green); font-size: 12px; font-weight: 600">180 Questions</span>
+  </div>
+  <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px">NEET Mock Test 6</h3>
+  <p style="color: var(--gray); margin-bottom: 24px; line-height: 1.6">
+    Complete mock test covering Physics, Chemistry, Botany, and Zoology with detailed solutions.
+  </p>
+  <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap">
+    <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+        <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      <span>3 Hours</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span>4 Subjects</span>
+    </div>
+  </div>
+  <button class="btn-primary" style="width: 100%; padding: 14px">Start Test</button>
+</div>
+
+      <div class="test-card hover-lift" onclick="window.location.href='/NEET/mocktest/html/test7.html'">
+  <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px">
+    <div
+      style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: var(--dark-navy)"
+    >
+      7
+    </div>
+    <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; color: var(--green); font-size: 12px; font-weight: 600">180 Questions</span>
+  </div>
+  <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px">NEET Mock Test 7</h3>
+  <p style="color: var(--gray); margin-bottom: 24px; line-height: 1.6">
+    Complete mock test covering Physics, Chemistry, Botany, and Zoology with detailed solutions.
+  </p>
+  <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap">
+    <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+        <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      <span>3 Hours</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span>4 Subjects</span>
+    </div>
+  </div>
+  <button class="btn-primary" style="width: 100%; padding: 14px">Start Test</button>
+</div>
+
+      <div class="test-card hover-lift" onclick="window.location.href='/NEET/mocktest/html/test8.html'">
+  <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px">
+    <div
+      style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: var(--dark-navy)"
+    >
+      8
+    </div>
+    <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; color: var(--green); font-size: 12px; font-weight: 600">180 Questions</span>
+  </div>
+  <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px">NEET Mock Test 8</h3>
+  <p style="color: var(--gray); margin-bottom: 24px; line-height: 1.6">
+    Complete mock test covering Physics, Chemistry, Botany, and Zoology with detailed solutions.
+  </p>
+  <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap">
+    <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+        <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      <span>3 Hours</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span>4 Subjects</span>
+    </div>
+  </div>
+  <button class="btn-primary" style="width: 100%; padding: 14px">Start Test</button>
+</div>
+
+      <div class="test-card hover-lift" onclick="window.location.href='/NEET/mocktest/html/test9.html'">
+  <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px">
+    <div
+      style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: var(--dark-navy)"
+    >
+      9
+    </div>
+    <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; color: var(--green); font-size: 12px; font-weight: 600">180 Questions</span>
+  </div>
+  <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px">NEET Mock Test 9</h3>
+  <p style="color: var(--gray); margin-bottom: 24px; line-height: 1.6">
+    Complete mock test covering Physics, Chemistry, Botany, and Zoology with detailed solutions.
+  </p>
+  <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap">
+    <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+        <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      <span>3 Hours</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span>4 Subjects</span>
+    </div>
+  </div>
+  <button class="btn-primary" style="width: 100%; padding: 14px">Start Test</button>
+</div>
+
+      <div class="test-card hover-lift" onclick="window.location.href='/NEET/mocktest/html/test10.html'">
+    
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px">
+          <div
+            style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: var(--dark-navy)"
+          >
+            10
+          </div>
+          <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; color: var(--green); font-size: 12px; font-weight: 600">180 Questions</span>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px">NEET Mock Test 10</h3>
+        <p style="color: var(--gray); margin-bottom: 24px; line-height: 1.6">
+          Complete mock test covering Physics, Chemistry, Botany, and Zoology with detailed solutions.
+        </p>
+        <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap">
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+              <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>3 Hours</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--gray); font-size: 14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>4 Subjects</span>
+          </div>
+        </div>
+        <button class="btn-primary" style="width: 100%; padding: 14px">Start Test</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="padding: 120px 24px; max-width: 1200px; margin: 0 auto">
+    <div class="glass" style="border-radius: 32px; padding: 80px 48px; text-align: center">
+      <div style="margin-bottom: 16px">
+        <span
+          style="display: inline-block; padding: 8px 20px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--green); border-radius: 50px; color: var(--green); font-size: 14px; font-weight: 600; letter-spacing: 1px"
+          >ABOUT</span
+        >
+      </div>
+      <h2 class="serif" style="font-size: clamp(36px, 5vw, 56px); font-weight: 800; margin-bottom: 24px; letter-spacing: -1px">
+        Built for <span class="gradient-text">NEET aspirants</span>,<br />
+        by a passionate developer
+      </h2>
+      <p style="font-size: 18px; color: var(--gray); max-width: 700px; margin: 0 auto 48px; line-height: 1.8">
+        NEET Mocktest by Kavy is a free platform designed to help medical entrance exam aspirants practice effectively. With 10 comprehensive mock tests covering all subjects, detailed solutions, and real-time performance tracking, we're here to support your journey to becoming a doctor.
+      </p>
+
+      <div style="display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap">
+        <span style="color: var(--gray)">Developed by</span>
+        <a
+          href="https://github.com/iamkavy47"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display: flex; align-items: center; gap: 12px; padding: 12px 24px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 50px; text-decoration: none; color: var(--cream); font-weight: 600; transition: background 0.15s ease, border-color 0.15s ease"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.795 8.205 23.385C8.805 23.49 9.03 23.13 9.03 22.815C9.03 22.53 9.015 21.585 9.015 20.58C6 21.135 5.22 19.845 4.98 19.17C4.845 18.825 4.26 17.76 3.75 17.475C3.33 17.25 2.73 16.695 3.735 16.68C4.68 16.665 5.355 17.55 5.58 17.91C6.66 19.725 8.385 19.215 9.075 18.9C9.18 18.12 9.495 17.595 9.84 17.295C7.17 16.995 4.38 15.96 4.38 11.37C4.38 10.065 4.845 8.985 5.61 8.145C5.49 7.845 5.07 6.615 5.73 4.965C5.73 4.965 6.735 4.65 9.03 6.195C9.99 5.925 11.01 5.79 12.03 5.79C13.05 5.79 14.07 5.925 15.03 6.195C17.325 4.635 18.33 4.965 18.33 4.965C18.99 6.615 18.57 7.845 18.45 8.145C19.215 8.985 19.68 10.05 19.68 11.37C19.68 15.975 16.875 16.995 14.205 17.295C14.64 17.67 15.015 18.39 15.015 19.515C15.015 21.12 15 22.41 15 22.815C15 23.13 15.225 23.505 15.825 23.385C18.2072 22.5807 20.2772 21.0497 21.7437 19.0074C23.2101 16.965 23.9993 14.5143 24 12C24 5.37 18.63 0 12 0Z"
+            />
+          </svg>
+          <span>Kavy Porwal</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding: 48px 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 120px">
+    <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <div
+          style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--green) 0%, var(--light-green) 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--dark-navy)"
+        >
+          N
+        </div>
+        <span style="font-weight: 700; font-size: 18px">NEET Mocktest by Kavy</span>
+      </div>
+      <div style="color: var(--gray); font-size: 14px">© 2025 NEET Mocktest. All rights reserved.</div>
+      <div style="display: flex; gap: 24px">
+        <a href="https://github.com/iamkavy47" target="_blank" rel="noopener noreferrer" style="color: var(--gray); transition: color 0.15s ease; text-decoration: none">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.795 8.205 23.385C8.805 23.49 9.03 23.13 9.03 22.815C9.03 22.53 9.015 21.585 9.015 20.58C6 21.135 5.22 19.845 4.98 19.17C4.845 18.825 4.26 17.76 3.75 17.475C3.33 17.25 2.73 16.695 3.735 16.68C4.68 16.665 5.355 17.55 5.58 17.91C6.66 19.725 8.385 19.215 9.075 18.9C9.18 18.12 9.495 17.595 9.84 17.295C7.17 16.995 4.38 15.96 4.38 11.37C4.38 10.065 4.845 8.985 5.61 8.145C5.49 7.845 5.07 6.615 5.73 4.965C5.73 4.965 6.735 4.65 9.03 6.195C9.99 5.925 11.01 5.79 12.03 5.79C13.05 5.79 14.07 5.925 15.03 6.195C17.325 4.635 18.33 4.965 18.33 4.965C18.99 6.615 18.57 7.845 18.45 8.145C19.215 8.985 19.68 10.05 19.68 11.37C19.68 15.975 16.875 16.995 14.205 17.295C14.64 17.67 15.015 18.39 15.015 19.515C15.015 21.12 15 22.41 15 22.815C15 23.13 15.225 23.505 15.825 23.385C18.2072 22.5807 20.2772 21.0497 21.7437 19.0074C23.2101 16.965 23.9993 14.5143 24 12C24 5.37 18.63 0 12 0Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // <CHANGE> minimal JS only: sticky nav style + mobile menu + smooth scroll
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.hamburger');
+      const isActive = !mobileMenu.classList.contains('active');
+
+      mobileMenu.classList.toggle('active', isActive);
+      hamburger.classList.toggle('active', isActive);
+
+      hamburger.setAttribute('aria-expanded', String(isActive));
+      mobileMenu.setAttribute('aria-hidden', String(!isActive));
+
+      document.body.classList.toggle('no-scroll', isActive);
+    }
+
+    // Smooth scroll for same-page links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
 </html>
